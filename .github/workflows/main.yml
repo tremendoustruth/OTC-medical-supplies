@@ -17,6 +17,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - working-directory: front-end
+      - run: npm ci
       - run: npm t
 
   # deploy:
