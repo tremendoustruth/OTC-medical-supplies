@@ -80,11 +80,11 @@ async function updateById(id, updatedData) {
 //     .finally(() => client.close());
 
 async function deleteProduct(id) {
-    inventoryItems.deleteOne({_id: new ObjectId(id)})
-    await client.close()
+    await inventoryItems.deleteOne({_id: new ObjectId(id)})
+    return
 }
 
-// deleteProduct("697924bc76a11a8b810d97eb")
+// deleteProduct("697945e1727cca0f9c03a16d")
 //     .then(console.log)
 //     .catch(console.error)
 //     .finally(() => client.close())
