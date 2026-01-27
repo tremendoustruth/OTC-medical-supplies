@@ -11,7 +11,17 @@ async function create_index(property) {
     return inventoryItems.createIndex({ [property] : 1})
 }
 
-main()
-    .then(console.log)
-    .catch(console.error)
-    .finally(() => client.close());
+// await create_index("title").then(console.log).finally(() => client.close())
+// await create_index("description").then(console.log).finally(() => client.close())
+// await create_index("price").then(console.log).finally(() => client.close())
+
+async function create_product(product_data) {
+    await inventoryItems.insertOne(product_data)
+    return product_data
+}
+
+// await create_product({
+//     "title": "Five-bladed razor",
+//     "description": "Elaborate device for punishing follicles",
+//     "price": 9.99
+// })
