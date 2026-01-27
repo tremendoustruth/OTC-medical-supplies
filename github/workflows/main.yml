@@ -1,0 +1,38 @@
+name: CI for front and back end
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout repo
+      - uses: actions/checkout@v5
+# -------- Build Front End -------------- 
+      #   with:
+      #     node-version: "20.x"
+      # - run: npm ci
+      # - run: npm run start & 
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ping 127.0.0.1 -c 4
+
+  # deploy:
+  #   needs: test 
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to AWS EC2
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: ${{ secrets.REMOTE_HOST }}
+  #         username: ${{ secrets.REMOTE_USER }}
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         script: |
+  #           cd cicd-docker
+  #           git pull
+  #           docker-compose up --build --detach
+  #           ping 127.0.0.1 -c 4
