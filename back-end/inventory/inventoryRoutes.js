@@ -41,8 +41,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// PUT /inventory/:id : full update
-router.put("/:id", async (req, res) => {
+// PATCH /inventory/:id : full update
+router.patch("/:id", async (req, res) => {
   try {
     const result = await updateById(req.params.id, req.body);
 
