@@ -7,5 +7,13 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: './tests/setup.js'
+  },
+  server: {
+    proxy: {
+      '/inventory': {
+        target: 'http://localhost:9876',
+        changeOrigin: true,
+      },
+    }
   }
 })
