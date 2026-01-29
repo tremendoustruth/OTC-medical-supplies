@@ -1,29 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Footer from './Footer'
 import NavBar from './NavBar.jsx'
+import Product from './Product.jsx'
+
+
 
 function App() {
-  const [count, setCount] = useState([0])
+  const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/inventory'); // Replace with your backend endpoint URL
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setProducts(result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []
+  )
 
   return (
     <div className="app-layout">
       <NavBar />
-
-      <main className="content">
-        <div className="page">
-          <h1>Welcome to MediSupply!</h1>
-
-          <div className="card">
-            <button onClick={() => setCount((count) => count + 1)}>
-              count is {count}
-            </button>
-          </div>
-
-          <p className="read-the-docs">Under Construction</p>
-        </div>
-      </main>
-
+      <h1>Welcome to MediSupply!</h1>
+      {products && <Product products={products} />}
       <Footer />
     </div>
   )
