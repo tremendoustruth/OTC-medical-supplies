@@ -1,9 +1,11 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
+
 
 .logo {
   height: 6em;
@@ -39,4 +41,26 @@
 
 .read-the-docs {
   color: #888;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.page {
+  max-width: 1200px;   /* centers content area */
+  margin: 0 auto;
+  padding: 32px 20px;
+  text-align: center;  /* centers text and button */
 }

@@ -65,7 +65,7 @@ function NavBar({ cartCount }) {
         </div>
       </header>
 
-      {/* Backdrop + Cart Drawer (only when open) */}
+      {/* Backdrop and Cart Drawer (only when open) */}
       {cartOpen && (
         <>
           <div

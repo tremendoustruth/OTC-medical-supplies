@@ -1,164 +1,154 @@
-/* Main navbar container */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 40;
 
-  background: #DBEAFE; /* matches footer */
-  border-bottom: 1px solid rgba(1, 1, 37, 0.15);
+  width: 100%;
+  background: #dbeafe;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 
-/* Centers navbar content so buttons don't hug the screen edge */
 .navInner {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 12px 16px;
+  width: 100%;
+  padding: 10px 24px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 260px 1fr 260px; /* left  center  right */
   align-items: center;
-  gap: 14px;
-
-  color: rgb(1, 1, 37);
+  gap: 16px;
 }
 
-/* Logo button (only navigation to home) */
+/* LOGO */
 .logoButton {
   display: flex;
   align-items: center;
   gap: 10px;
 
-  max-width: fit-content;
-  padding: 4px;
-
+  padding: 0;
   border: none;
   background: transparent;
   cursor: pointer;
-
-  flex-shrink: 0; /* prevents shrinking on small screens */
 }
 
-/* Logo image */
 .logoImg {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  object-fit: contain;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-/* Wraps brand name + tagline */
 .logoTextWrap {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
   line-height: 1.1;
+  text-align: left;
 }
 
-/* Brand name */
 .logoText {
   font-weight: 800;
   font-size: 16px;
   color: rgb(1, 1, 37);
 }
 
-/* Tagline under brand */
 .tagline {
   font-size: 11px;
-  color: rgba(1, 1, 37, 0.7);
+  color: rgba(1, 1, 37, 0.65);
 }
 
+/*SEARCH*/
 .searchWrap {
-  flex: 1;
-  max-width: 520px;  /* prevents pushing actions too far right */
-  min-width: 260px;
+  width: 480px;
+  justify-self: center;
 
   display: flex;
   align-items: center;
   gap: 8px;
 
   background: white;
-  border: 1px solid rgba(1, 1, 37, 0.2);
-  border-radius: 10px;
-  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 7px 10px;
 }
 
 
-/* Search icon */
 .searchIcon {
   font-size: 14px;
-  color: rgba(1, 1, 37, 0.6);
+  color: rgba(1, 1, 37, 0.55);
 }
 
-/* Search input (dummy) */
 .searchInput {
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
 
+  font-size: 13px;
   color: rgb(1, 1, 37);
-  font-size: 14px;
 }
 
-/* Right-side actions container */
+/*ACTION BUTTONS  */
+
 .navActions {
   display: flex;
   gap: 10px;
+  justify-self: end;
+
+  padding-right: 45px;
 }
 
-/* Generic nav button */
-.navBtn {
-  position: relative; /* required for badge */
 
-  display: flex;
+.navBtn {
+  position: relative;
+
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 7px 12px;
+  border-radius: 8px;
 
-  border: 1px solid rgba(1, 1, 37, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background: white;
 
-  cursor: pointer;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   color: rgb(1, 1, 37);
+
+  cursor: pointer;
 }
 
-/* text wrapper inside buttons */
-.btnText {
-  font-weight: 600;
-}
-
-/* Cart count badge (top-right) */
 .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -6px;
+  right: -6px;
 
-  width: 18px;
-  height: 18px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 5px;
+
   border-radius: 999px;
-
-  background: rgb(1, 1, 37);
+  background: rgba(0, 0, 0, 0.65);
   color: white;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
 }
 
-/* Hover feedback */
+/* Hover */
 .navBtn:hover,
 .logoButton:hover {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
-/* Dark backdrop behind cart drawer */
+/* CART DRAWER */
 .backdrop {
   position: fixed;
   inset: 0;
@@ -166,49 +156,52 @@
   z-index: 20;
 }
 
-/* Cart drawer (hidden by default) */
 .cartDrawer {
   position: fixed;
-  top: 0;
+  top: 56px;             /* below navbar */
   right: 0;
+
   width: 360px;
-  height: 100vh;
+  height: calc(100vh - 56px);
+
   background: white;
-  border-left: 1px solid rgba(1, 1, 37, 0.15);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
   padding: 12px;
-  z-index: 30;
+  z-index: 50;            /* higher than navbar */
 }
 
-
-/* Cart drawer visible state */
-.open {
-  right: 0;
-}
-
-/* Drawer header */
 .drawerHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Drawer text */
 .drawerText {
   margin-top: 12px;
   color: rgba(1, 1, 37, 0.75);
 }
 
-/* Checkout button */
 .checkoutBtn {
   margin-top: 16px;
   width: 100%;
   padding: 10px;
 
   border-radius: 10px;
-  border: 1px solid rgba(1, 1, 37, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background: white;
 
   font-weight: 800;
   cursor: pointer;
   color: rgb(1, 1, 37);
+}
+
+@media (max-width: 900px) {
+  .searchWrap {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .navInner {
+    grid-template-columns: auto 1fr auto;
+  }
 }
