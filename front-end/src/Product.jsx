@@ -1,24 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react"
 import { Link } from "react-router";
-// import styles from "./Product.module.css";
+import styles from "./Product.module.css";
 
-
-
-function Product({ products, onAddToCart }) {
-    const product = products[0]; //defining product to be added to cart
-    const title = products[0].title
-    const description = products[0].description
-    const price = products[0].price
+    
+         
+function Product({ title, description, price, url, id, onAddToCart }) {
     return <>
-        <p> {title} </p>
-        <p>{description}</p>
-        <p>{price}</p>
-         <button onClick={() => onAddToCart(product)}>
-        Add to Cart
-      </button> {/* Example button to add to cart */}
+        <div className={styles.productCard}>
+            <div className={styles.productPlaceholder}>Product Image Here</div>
+            <p className={styles.title}> {title} </p>
+            <p className={styles.description}>{description}</p>
+            <p className={styles.price}>${price}</p>
+            <button className={styles.addToCartBtn} onClick={() => onAddToCart({ title, description, price, url, id })}>
+                Add to Cart
+            </button>
+        </div>
     </>
 }
-
 
 export default Product

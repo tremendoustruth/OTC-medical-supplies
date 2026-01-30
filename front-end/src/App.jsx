@@ -4,6 +4,9 @@ import Footer from './Footer'
 import NavBar from './NavBar.jsx'
 import Product from './Product.jsx'
 import CartDrawer from './CartDrawer.jsx'
+import ProductList from './ProductList.jsx'
+
+
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -92,7 +95,7 @@ function App() {
           <h1>Welcome to MediSupply!</h1>
           
           {/* add onAddToCart */}
-          {products && <Product products={products} onAddToCart={addToCart} />}
+          {products && <ProductList products={products} onAddToCart={addToCart} />}
         </div>
       </main>
 
@@ -100,5 +103,6 @@ function App() {
     </div>
   );
 }
-
 export default App;
+
+
