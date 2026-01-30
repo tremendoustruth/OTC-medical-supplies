@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Footer from './Footer'
 import NavBar from './NavBar.jsx'
-import Product from './Product.jsx'
+import ProductList from './ProductList.jsx'
 
 
 
@@ -33,11 +33,12 @@ function App() {
     <div className="app-layout">
       <NavBar />
       <h1>Welcome to MediSupply!</h1>
-      {products && <Product products={products} />}
+      {products && <ProductList products={products} />}
       <Footer />
     </div>
-  )
+  );
 }
+export default App;
 
-export default App
+
 
