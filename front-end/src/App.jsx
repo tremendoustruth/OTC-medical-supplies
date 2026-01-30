@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Footer from './Footer'
 import NavBar from './NavBar.jsx'
-import Product from './Product.jsx'
+import ProductList from './ProductList.jsx'
 
 
 
@@ -32,12 +32,8 @@ function App() {
   return (
     <div className="app-layout">
       <NavBar />
-      <main className="content">
-        <div className="page">
-          <h1>Welcome to MediSupply!</h1>
-          {products && <Product products={products} />}
-        </div>
-      </main>
+      <h1>Welcome to MediSupply!</h1>
+      {products && <ProductList products={products} />}
       <Footer />
     </div>
   );

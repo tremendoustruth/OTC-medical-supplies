@@ -1,20 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react"
 import { Link } from "react-router";
-// import styles from "./Product.module.css";
+import styles from "./Product.module.css";
 
 
 
-function Product({ products }) {
-    const title = products[0].title
-    const description = products[0].description
-    const price = products[0].price
+function Product({ title, description, price, url, id }) {
     return <>
-        <p> {title} </p>
-        <p>{description}</p>
-        <p>{price}</p>
+        <div className={styles.productCard}>
+            <div className={styles.productPlaceholder}>Product Image Here</div>
+            <p className={styles.title}> {title} </p>
+            <p className={styles.description}>{description}</p>
+            <p className={styles.price}>${price}</p>
+        </div>
     </>
 }
-
 
 export default Product

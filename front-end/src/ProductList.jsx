@@ -13,19 +13,19 @@ function ProductList({ products }) {
     return (
         <main>
             <h1>All Products:</h1>
-            <div className={styles.productList}>
+            <div className={styles.productList} >
                 {products.map((product) => (
                     <Product
-                        key={product.id}
-                        id={product.id}
+                        key={product._id}
+                        id={product._id}
                         title={product.title}
                         description={product.description}
+                        price={product.price}
                         url={product.url} />
                 ))}
             </div>
         </main>
     )
-
 }
 
 export default ProductList
