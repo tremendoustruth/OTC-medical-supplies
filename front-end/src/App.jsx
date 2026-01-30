@@ -32,12 +32,17 @@ function App() {
   return (
     <div className="app-layout">
       <NavBar />
-      <h1>Welcome to MediSupply!</h1>
-      {products && <Product products={products} />}
+      <main className="content">
+        <div className="page">
+          <h1>Welcome to MediSupply!</h1>
+          {products && <Product products={products} />}
+        </div>
+      </main>
       <Footer />
     </div>
-  )
+  );
 }
+export default App;
 
-export default App
+
 

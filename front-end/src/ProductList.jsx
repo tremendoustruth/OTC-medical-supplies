@@ -20,7 +20,7 @@ function ProductList({ products }) {
                         id={product.id}
                         title={product.title}
                         description={product.description}
-                        url={post.url} />
+                        url={product.url} />
                 ))}
             </div>
         </main>
