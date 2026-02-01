@@ -4,6 +4,8 @@ import Footer from './Footer'
 import NavBar from './NavBar.jsx'
 import CartDrawer from './CartDrawer.jsx'
 import ProductList from './ProductList.jsx'
+import { Routes, Route } from 'react-router-dom'
+import Checkout from './Checkout.jsx'
 
 
 
@@ -73,10 +75,12 @@ function App() {
 
   return (
     <div className="app-layout">
-      {/* pass cart click and count */}
-      <NavBar cartCount={cartCount} onCartClick={() => setIsCartOpen(true)} />
+      {/* ALWAYS visible */}
+      <NavBar
+        cartCount={cartCount}
+        onCartClick={() => setIsCartOpen(true)}
+      />
 
-      {/* render drawer */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -89,19 +93,33 @@ function App() {
         onRemoveFromCart={removeFromCart}
       />
 
+      {/* PAGE CONTENT */}
       <main className="content">
-        <div className="page">
-          <h1>Welcome to MediSupply!</h1>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="page">
+                <h1>Welcome to MediSupply!</h1>
 
-          {/* add onAddToCart */}
-          {products && <ProductList products={products} onAddToCart={addToCart} />}
-        </div>
+                {products && (
+                  <ProductList
+                    products={products}
+                    onAddToCart={addToCart}
+                  />
+                )}
+              </div>
+            }
+          />
+
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
       </main>
 
+      {/* ALWAYS visible */}
       <Footer />
     </div>
   );
 }
+
 export default App;
-
-

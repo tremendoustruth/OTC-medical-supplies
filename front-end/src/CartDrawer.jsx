@@ -1,6 +1,7 @@
 // CartDrawer.jsx
 import React from "react";
 import styles from "./CartDrawer.module.css";
+import { Link } from "react-router-dom";
 
 function CartDrawer({
   isOpen,
@@ -46,14 +47,10 @@ function CartDrawer({
                   <span>Subtotal</span>
                   <strong>{formatMoney(0)}</strong>
                 </div>
-                <button
-                  className={styles["cart-drawer__checkout"]}
-                  disabled
-                  title="Add items to cart to checkout"
-                >
-                  Checkout
-                </button>
-              </div>
+                <Link to="/checkout" className={styles["cart-drawer__checkout"]} disabled title="Add items to cart to checkout">
+                    Checkout
+                  </Link>
+                </div>
             </>
           ) : (
             <>
@@ -110,10 +107,9 @@ function CartDrawer({
                   <span>Subtotal</span>
                   <strong>{formatMoney(subtotal)}</strong>
                 </div>
-
-                <button className={styles["cart-drawer__checkout"]}>
-                  Checkout
-                </button>
+                <Link to="/checkout" onClick ={onClose} className={styles["cart-drawer__checkout"]}>
+                    Checkout
+                </Link>
               </div>
             </>
           )}

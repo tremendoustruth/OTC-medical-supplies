@@ -1,76 +1,84 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import logo from "./assets/medisupplysymbol.jpeg";
 import styles from "./NavBar.module.css";
 
+
+
+
 function NavBar({ cartCount, onCartClick }) {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  const goHome = () => navigate("/");
+    const goHome = () => navigate("/");
 
-  return (
-    <>
-      {/* Navbar */}
-      <header className={styles.navbar}>
-        <div className={styles.navInner}>
-          {/* Logo */}
-          <button className={styles.logoButton} onClick={goHome}>
-            <img
-              src={logo}
-              alt="MediSupply logo"
-              className={styles.logoImg}
-            />
-            <div className={styles.logoTextWrap}>
-              <span className={styles.logoText}>MediSupply</span>
-              <span className={styles.tagline}>
-                Your Favorite Digital Pharmacy
-              </span>
-            </div>
-          </button>
+    if (location.pathname === "/checkout") { //TODO: add confirmation page as well
+        return null; // Hide NavBar on checkout and confirmation pages
+    }
 
-          {/* Search (dummy) */}
-          <div className={styles.searchWrap}>
-            <span className={styles.searchIcon}>🔍</span>
-            <input
-              className={styles.searchInput}
-              placeholder="Search medical supplies..."
-              readOnly
-            />
-          </div>
+    return (
+        <>
+            {/* Navbar */}
+            <header className={styles.navbar}>
+                <div className={styles.navInner}>
+                    {/* Logo */}
+                    <button className={styles.logoButton} onClick={goHome}>
+                        <img
+                            src={logo}
+                            alt="MediSupply logo"
+                            className={styles.logoImg}
+                        />
+                        <div className={styles.logoTextWrap}>
+                            <span className={styles.logoText}>MediSupply</span>
+                            <span className={styles.tagline}>
+                                Your Favorite Digital Pharmacy
+                            </span>
+                        </div>
+                    </button>
 
-          {/* Actions */}
-          <div className={styles.navActions}>
-            <button className={styles.navBtn}>
-              👤 <span className={styles.btnText}>My Account</span>
-            </button>
+                    {/* Search (dummy) */}
+                    <div className={styles.searchWrap}>
+                        <span className={styles.searchIcon}>🔍</span>
+                        <input
+                            className={styles.searchInput}
+                            placeholder="Search medical supplies..."
+                            readOnly
+                        />
+                    </div>
 
-            {/* updated cart button */}
-            <button
-              className={styles.navBtn}
-              onClick={onCartClick}
-            >
-              🛒 <span className={styles.btnText}>Cart</span>
-              {cartCount > 0 && (
-                <span className={styles.badge}>{cartCount}</span>
-              )}
-            </button>
-          </div>
-        </div>
-      </header>
-    </>
-  );
+                    {/* Actions */}
+                    <div className={styles.navActions}>
+                        <button className={styles.navBtn}>
+                            👤 <span className={styles.btnText}>My Account</span>
+                        </button>
+
+                        {/* updated cart button */}
+                        <button
+                            className={styles.navBtn}
+                            onClick={onCartClick}
+                        >
+                            🛒 <span className={styles.btnText}>Cart</span>
+                            {cartCount > 0 && (
+                                <span className={styles.badge}>{cartCount}</span>
+                            )}
+                        </button>
+                    </div>
+                </div>
+            </header>
+        </>
+    );
 }
 
 /* PropTypes */
 NavBar.propTypes = {
-  cartCount: PropTypes.number,
-  onCartClick: PropTypes.func,
+    cartCount: PropTypes.number,
+    onCartClick: PropTypes.func,
 };
 
 NavBar.defaultProps = {
-  cartCount: 0,
-  onCartClick: () => {},
+    cartCount: 0,
+    onCartClick: () => { },
 };
 
 export default NavBar;
