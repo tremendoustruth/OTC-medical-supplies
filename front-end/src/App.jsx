@@ -4,7 +4,7 @@ import Footer from './Footer'
 import NavBar from './NavBar.jsx'
 import CartDrawer from './CartDrawer.jsx'
 import ProductList from './ProductList.jsx'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Checkout from './Checkout.jsx'
 
 
@@ -16,6 +16,12 @@ function App() {
 
   // Cart drawer state
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/checkout") { //TODO: include confirmation page once created
+      setIsCartOpen(false);
+    }
+  }, [location.pathname]);
 
   //  Cart state
   const [cartItems, setCartItems] = useState([]);

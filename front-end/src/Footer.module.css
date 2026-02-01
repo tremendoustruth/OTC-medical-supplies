@@ -1,7 +1,7 @@
 .footer {
   background-color: #dbeafe;
   color: rgb(1, 1, 37);
-  padding: 14px 24px;
+  padding: 8px 24px;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: .25rem;
 }
 
 .footer__links {
