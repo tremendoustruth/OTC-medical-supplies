@@ -26,7 +26,7 @@
     border: 0.5px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px;
     width: 300px;
-    height: 375px;
+    height: fit-content;
     margin: 10px;
     padding: 15px;
 }
