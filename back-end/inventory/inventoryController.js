@@ -8,7 +8,11 @@ const database = client.db("OTC_DB");
 const inventoryItems = database.collection("Inventory_DB");
 
 async function createIndex(property) {
-    return inventoryItems.createIndex({ [property] : 1})
+    try {
+        return inventoryItems.createIndex({ [property] : 1})
+    } catch (error) {
+        console.error("Error creating index:", error)
+    }
 }
 
 // createIndex("title").then(console.log).finally(() => client.close())
@@ -16,8 +20,12 @@ async function createIndex(property) {
 // createIndex("price").then(console.log).finally(() => client.close())
 
 async function createProduct(product_data) {
-    await inventoryItems.insertOne(product_data)
-    return product_data
+    try {
+        await inventoryItems.insertOne(product_data)
+        return product_data
+    } catch (error) {
+        console.error("Error creating product:", error)
+    }
 }
 
 // createProduct({
@@ -32,12 +40,25 @@ async function createProduct(product_data) {
 
 // READ all products
 async function getAllProducts() {
-    return inventoryItems.find({}).toArray();
+    try {
+        return inventoryItems.find({}).toArray();
+    } catch (error) {
+        console.error("Error fetching products:", error)
+    }
 }
 
 // READ product by id
 async function getProductById(id) {
-    return inventoryItems.findOne({ _id: new ObjectId(id) });
+    try {
+        const product = inventoryItems.findOne({ _id: new ObjectId(id) });
+        if (!product) {
+            console.error(error)
+            return
+        }
+        return product
+    } catch (error) {
+        console.error("Error fetching product:", error)    
+    }
 }
 
 // async function test() {
@@ -48,11 +69,11 @@ async function getProductById(id) {
 
 // test().catch(console.error);
 
-async function testGetById() {
-  const product = await getProductById("6978ea3b936fb09bb523c3d2");
-//   console.log(product);
-  await client.close();
-}
+// async function testGetById() {
+//   const product = await getProductById("6978ea3b936fb09bb523c3d2");
+// //   console.log(product);
+//   await client.close();
+// }
 
 // testGetById().catch(console.error);
 
@@ -66,8 +87,15 @@ async function testGetById() {
 // test().catch(console.error);
 
 async function updateById(id, updatedData) {
-    const newProduct = inventoryItems.updateOne({_id: new ObjectId(id)}, {$set: updatedData})
-    return newProduct
+    try{
+        const newProduct = inventoryItems.updateOne({_id: new ObjectId(id)}, {$set: updatedData})
+        if(!newProduct) {
+            console.error(error)
+            return        }
+        return newProduct
+    } catch (error) {
+        console.error("Error updating product:", error)
+    }
 }
 
 // updateById("6979232c7256cfcef2b1cf58", {
@@ -80,8 +108,16 @@ async function updateById(id, updatedData) {
 //     .finally(() => client.close());
 
 async function deleteProduct(id) {
-    const result = await inventoryItems.deleteOne({_id: new ObjectId(id)})
-    return result.deletedCount === 1; // return true if deleted, false otherwise
+    try {
+        const result = await inventoryItems.deleteOne({_id: new ObjectId(id)})
+        if(!result) {
+            console.error(error)
+            return        
+        }
+        return result.deletedCount === 1; // return true if deleted, false otherwise
+    } catch {
+        console.error("Error deleting product:", error)
+    }
 }
 
 // deleteProduct("697945e1727cca0f9c03a16d")
