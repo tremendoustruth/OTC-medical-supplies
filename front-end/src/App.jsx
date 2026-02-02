@@ -118,7 +118,7 @@ function App() {
             }
           />
 
-          <Route path="/checkout" element={<Checkout cartItems={cartItems} subtotal={subtotal} />} />
+          <Route path="/checkout" element={<Checkout cartItems={cartItems} subtotal={subtotal} cartCount={cartCount} />} />
         </Routes>
       </main>
 
