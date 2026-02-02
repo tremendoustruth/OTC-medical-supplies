@@ -50,6 +50,11 @@
   text-align: center;
 }
 
+.cart-drawer__checkout:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.75);
+}
+
 .cart-drawer__body {
   overflow: auto;
   padding-right: 0.25rem;
@@ -132,7 +137,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 700;
 }
+
 /* Quantity stepper */
 .qtyStepper {
   display: flex;

@@ -57,11 +57,9 @@ function OrderSummary({ cartItems = [], subtotal = 0 }) {
                             <span>{formatMoney(total)}</span>
                         </div>
                     </div>
-
-                    <button className={styles.placeOrderBtn} type="button">
+                    <Link className={styles.placeOrderBtn}>
                         Place Order
-                    </button>
-
+                    </Link>
                     <div className={styles.secureNote}>
                         🔒 Secure checkout
                         <div className={styles.secureSubtext}>Your payment information is encrypted</div>

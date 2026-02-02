@@ -105,7 +105,7 @@ function CartDrawer({
               <div className={styles["cart-drawer__summary"]}>
                 <div className={styles["cart-drawer__row"]}>
                   <span>Subtotal</span>
-                  <strong>{formatMoney(subtotal)}</strong>
+                  {formatMoney(subtotal)}
                 </div>
                 <Link to="/checkout" onClick={onClose} className={styles["cart-drawer__checkout"]}>
                   Checkout
