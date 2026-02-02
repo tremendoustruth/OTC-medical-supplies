@@ -19,7 +19,7 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname === "/checkout") { //TODO: include confirmation page once created
+    if (location.pathname === "/checkout" || location.pathname === "/confirm") {
       setIsCartOpen(false);
     }
   }, [location.pathname]);
@@ -119,7 +119,12 @@ function App() {
             }
           />
 
-          <Route path="/checkout" element={<Checkout cartItems={cartItems} subtotal={subtotal} cartCount={cartCount} />} />
+          <Route path="/checkout" element={<Checkout 
+            cartItems={cartItems} 
+            subtotal={subtotal} 
+            cartCount={cartCount}
+            setCartItems={setCartItems}
+          />} />
           <Route path="/confirm" element={<ConfirmationPage/>}/>
         </Routes>
       </main>

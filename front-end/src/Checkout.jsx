@@ -5,7 +5,7 @@ import Payment from "./Payment.jsx"
 import styles from "./Checkout.module.css"
 import { Link } from "react-router-dom";
 
-function Checkout({ cartItems = [], subtotal = 0, cartCount = 0 }) {
+function Checkout({ cartItems = [], subtotal = 0, cartCount = 0, setCartItems }) {
     return (
         <div className={styles.page}>
             <h1 className={styles.title}>Checkout</h1>
@@ -25,6 +25,7 @@ function Checkout({ cartItems = [], subtotal = 0, cartCount = 0 }) {
                         cartItems={cartItems}
                         subtotal={subtotal}
                         cartCount={cartCount}
+                        setCartItems={setCartItems}
                     />
                 </div>
             </div>

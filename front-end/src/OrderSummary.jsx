@@ -1,7 +1,7 @@
 import styles from "./OrderSummary.module.css";
 import { Link } from "react-router-dom"
 
-function OrderSummary({ cartItems = [], subtotal = 0 }) {
+function OrderSummary({ cartItems = [], subtotal = 0, setCartItems }) {
     const formatMoney = (n) =>
         Number(n || 0).toLocaleString("en-US", {
             style: "currency",
@@ -13,6 +13,10 @@ function OrderSummary({ cartItems = [], subtotal = 0 }) {
     const tax = subtotal * taxRate;
     const shipping = 0;
     const total = subtotal + tax + shipping;
+
+    const confirmClick = function () {
+        setCartItems([])
+    }
 
     return (
         <aside className={styles.summaryCard}>
@@ -57,7 +61,7 @@ function OrderSummary({ cartItems = [], subtotal = 0 }) {
                             <span>{formatMoney(total)}</span>
                         </div>
                     </div>
-                    <Link to="/confirm" className={styles.placeOrderBtn}>
+                    <Link to="/confirm" className={styles.placeOrderBtn} onClick={confirmClick}>
                         Place Order
                     </Link>
                     <div className={styles.secureNote}>
