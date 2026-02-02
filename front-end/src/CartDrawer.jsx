@@ -15,7 +15,7 @@ function CartDrawer({
   if (!isOpen) return null;
 
   const formatMoney = (n) =>
-    Number(n || 0).toLocaleString("en-US", {
+    Number(n || 0).toLocaleString("en-US", { //When n is undefined, error ought to be raised (generalize)
       style: "currency",
       currency: "USD",
     });
@@ -48,9 +48,9 @@ function CartDrawer({
                   <strong>{formatMoney(0)}</strong>
                 </div>
                 <Link to="/checkout" className={styles["cart-drawer__checkout"]} disabled title="Add items to cart to checkout">
-                    Checkout
-                  </Link>
-                </div>
+                  Checkout
+                </Link>
+              </div>
             </>
           ) : (
             <>
@@ -107,8 +107,8 @@ function CartDrawer({
                   <span>Subtotal</span>
                   <strong>{formatMoney(subtotal)}</strong>
                 </div>
-                <Link to="/checkout" onClick ={onClose} className={styles["cart-drawer__checkout"]}>
-                    Checkout
+                <Link to="/checkout" onClick={onClose} className={styles["cart-drawer__checkout"]}>
+                  Checkout
                 </Link>
               </div>
             </>
