@@ -6,6 +6,7 @@ import CartDrawer from './CartDrawer.jsx'
 import ProductList from './ProductList.jsx'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Checkout from './Checkout.jsx'
+import ConfirmationPage from './ConfirmationPage.jsx'
 
 
 
@@ -119,6 +120,7 @@ function App() {
           />
 
           <Route path="/checkout" element={<Checkout cartItems={cartItems} subtotal={subtotal} cartCount={cartCount} />} />
+          <Route path="/confirm" element={<ConfirmationPage/>}/>
         </Routes>
       </main>
 

@@ -57,7 +57,7 @@ function OrderSummary({ cartItems = [], subtotal = 0 }) {
                             <span>{formatMoney(total)}</span>
                         </div>
                     </div>
-                    <Link className={styles.placeOrderBtn}>
+                    <Link to="/confirm" className={styles.placeOrderBtn}>
                         Place Order
                     </Link>
                     <div className={styles.secureNote}>
