@@ -48,25 +48,25 @@ RUN npm run test
 ################################################################################
 # Create a new stage to run the application with minimal runtime dependencies
 # where the necessary files are copied from the build stage.
-FROM base as final
+# FROM base as final
+
+FROM nginx:stable-alpine AS production
 
 # Use production node environment by default.
-ENV NODE_ENV production
+# ENV NODE_ENV production
 
 # Run the application as a non-root user.
-USER node
+# USER node
 
 # Copy package.json so that package manager commands can be used.
-COPY package.json .
+# COPY package.json .
 
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.
-COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/dist/ ./dist/
+# COPY --from=deps /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/dist/ /usr/share/nginx/html
 
 
-# Expose the port that the application listens on.
-EXPOSE 5173
-
-# Run the application.
-CMD npm run start
+# Production Stage
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

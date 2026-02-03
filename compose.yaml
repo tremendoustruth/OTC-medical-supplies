@@ -7,9 +7,28 @@
 # You can add other services your application may depend on here, such as a
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
-include: 
-  - back-end/inventory/compose.yaml
-  - front-end/compose.yaml
+# include: 
+#   - back-end/inventory/compose.yaml
+#   - front-end/compose.yaml
+services:
+  react:
+    build:
+      context: ./front-end
+    networks:
+      - backbone
+    ports:
+      - "80:80"
+  inventory:
+    env_file: "./back-end/inventory/.env"
+    build:
+      context: ./back-end/inventory
+    networks:
+      - backbone
+    ports:
+      - "9876:9876"
+networks:
+  backbone:
+    driver: bridge 
 
 
 # The commented out section below is an example of how to define a PostgreSQL

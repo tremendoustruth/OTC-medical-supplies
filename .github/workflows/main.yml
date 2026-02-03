@@ -12,13 +12,10 @@ jobs:
         run: |
           mkdir -p back-end/inventory
           echo "${{ secrets.INVENTORY_ENV }}" > back-end/inventory/.env
-      # - name: debug
-      #   run: 
-      #     pwd
-      #     ls -la
 
       - name: Build and run docker compose
         run: docker compose up --build -d
+
       - name: Shut down containers 
         if: always()
         run: docker compose down 
