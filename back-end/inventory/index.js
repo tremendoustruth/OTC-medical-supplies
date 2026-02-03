@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
 app.use(express.json());
 
 const inventoryRoutes = require("./inventoryRoutes");
+
+app.use(morgan("dev"));
 app.use("/inventory", inventoryRoutes);
 
 const { client } = require("./inventoryController");

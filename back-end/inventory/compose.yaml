@@ -14,8 +14,8 @@ services:
       context: .
     environment:
       NODE_ENV: production
-    ports:
-      - 9876:9876
+    # ports:
+    #   - 9876:9876
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
