@@ -3,10 +3,10 @@ on: [push]
 
 jobs:
   compose:
-    runs-on: docker
+    runs-on: ubuntu-latest
     steps:
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
       
       - name: debug
         run: 
@@ -14,5 +14,5 @@ jobs:
           ls -la
 
       - name: Build and run docker compose
-        run: docker compose build
+        run: docker compose up build -d
 
