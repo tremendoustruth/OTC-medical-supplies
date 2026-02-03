@@ -20,15 +20,22 @@ function OrderSummary({ cartItems = [], subtotal = 0, setCartItems, showPlaceOrd
     return (
         <aside className={styles.summaryCard}>
             {!showPlaceOrder && (
-                <div>
+                <div className={styles.orderInfo}>
                     <p>
                         Order Number: #87654
                     </p>
                     <p>
-                        Est. Delivery Date: {arrivalDate.toString()}
+                        Est. Delivery Date: {" "}
+                        {arrivalDate.toLocaleDateString("en-US", {
+                            weekday: "short",
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric",
+                        })}
                     </p>
                 </div>
             )}
+
             <h2 className={styles.title}>Order Summary</h2>
             {cartItems.length === 0 ? (
                 <p className={styles.emptyText}>

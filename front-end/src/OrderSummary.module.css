@@ -109,3 +109,23 @@
     font-size: 0.75rem;
     color: rgba(0, 0, 0, 0.55);
 }
+
+.orderInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.orderInfo p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.orderInfo p:last-child {
+    text-align: right;
+}
