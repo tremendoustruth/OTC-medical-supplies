@@ -7,12 +7,12 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v5
-        
-      - name: Set up Docker Compose
-        uses: docker/setup-compose-action@v1
-        with:
-          version: latest
+      
+      - name: debug
+        run: 
+          pwd
+          ls -la
 
       - name: Build and run docker compose
-        run: docker compose up --build
+        run: docker compose build
 
