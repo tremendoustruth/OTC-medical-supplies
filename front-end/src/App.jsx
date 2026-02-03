@@ -127,7 +127,8 @@ function App() {
           />} />
           <Route path="/confirm" element={<ConfirmationPage
             cartItems={cartItems}
-            subtotal={subtotal} />} />
+            subtotal={subtotal}
+            setCartItems={setCartItems} />} />
         </Routes>
       </main>
 

@@ -1,5 +1,6 @@
 import styles from "./OrderSummary.module.css";
 import { Link } from "react-router-dom"
+import { addDays } from "date-fns";
 
 function OrderSummary({ cartItems = [], subtotal = 0, setCartItems, showPlaceOrder = true }) {
     const formatMoney = (n) =>
@@ -14,12 +15,20 @@ function OrderSummary({ cartItems = [], subtotal = 0, setCartItems, showPlaceOrd
     const shipping = 0;
     const total = +(subtotal + tax + shipping).toFixed(2);
 
-    // const confirmClick = function () {
-    //     if (setCartItems) setCartItems([]); // Clear cart on order confirmation
-    // }
+    const arrivalDate = addDays(new Date(), 5)
 
     return (
         <aside className={styles.summaryCard}>
+            {!showPlaceOrder && (
+                <div>
+                    <p>
+                        Order Number: #87654
+                    </p>
+                    <p>
+                        Est. Delivery Date: {arrivalDate.toString()}
+                    </p>
+                </div>
+            )}
             <h2 className={styles.title}>Order Summary</h2>
             {cartItems.length === 0 ? (
                 <p className={styles.emptyText}>
