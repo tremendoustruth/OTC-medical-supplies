@@ -1,8 +1,8 @@
-name: CI for front and back end
+name: Docker build app
 on: [push]
 
 jobs:
-  docker-build:
+  build:
     runs-on: ubuntu-latest
     defaults:
       run: 
@@ -14,19 +14,3 @@ jobs:
       - name: Build and run docker compose
         run: docker compose up --build
 
-
-  # deploy:
-  #   needs: test 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to AWS EC2
-  #       uses: appleboy/ssh-action@master
-  #       with:
-  #         host: ${{ secrets.REMOTE_HOST }}
-  #         username: ${{ secrets.REMOTE_USER }}
-  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
-  #         script: |
-  #           cd cicd-docker
-  #           git pull
-  #           docker-compose up --build --detach
-  #           ping 127.0.0.1 -c 4
