@@ -2,18 +2,6 @@ name: CI for front and back end
 on: [push]
 
 jobs:
-  # build: 
-#     runs-on: ubuntu-latest
-
-#     steps: 
-#       - name: Checkout repo
-#       - uses: actions/checkout@v5
-# # -------- Build Front End -------------- 
-#       #   with:
-#       #     node-version: "20.x"
-#       # - run: npm ci
-#       # - run: npm run start & 
-
   docker-build:
     runs-on: ubuntu-latest
     defaults:
@@ -25,13 +13,7 @@ jobs:
 
       - name: Build and run docker compose
         run: docker compose up --build
-      #   with:
-      #     node-version: "22.x"
 
-      # - name: install dependencies 
-      #   run: npm ci
-      # - name: run test
-      #   run: npm t
 
   # deploy:
   #   needs: test 
