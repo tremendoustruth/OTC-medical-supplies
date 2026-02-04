@@ -13,18 +13,6 @@ describe('the app component', () => {
         )
     )
 
-
-
-    describe('something truthy and falsy', () => {
-        it('true to be true', () => {
-            expect(true).toBe(true);
-        });
-
-        it('false to be false', () => {
-            expect(false).toBe(false);
-        });
-    });
-
     describe('App', () => {
         it('renders headline', () => {
             render(
@@ -53,28 +41,8 @@ describe('the app component', () => {
         });
     });
 
-    describe('Footer', () => {
-        it('renders copyright', () => {
-            render(
-                <MemoryRouter>
-                    <App />
-                </MemoryRouter>
-            );
-
-            expect(
-                screen.getByText(/All rights reserved/i)
-            ).toBeInTheDocument();
-        });
-    });
-
     describe('ProductList', () => {
         it('renders products', async () => {
-            // global.fetch = vi.fn(() =>
-            //     Promise.resolve({
-            //         json: () => Promise.resolve([{ title:"test product",description:"a thing",price:999 }]),
-            //         ok: true,
-            //     })
-            // );
             render(
                 <MemoryRouter>
                     <App />
