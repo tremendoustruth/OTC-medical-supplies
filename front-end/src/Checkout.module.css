@@ -7,6 +7,10 @@
     margin-left: 25px;
 }
 
+.backLink:hover {
+    color: #6cacff;
+}
+
 .page {
     max-width: 1100px;
     margin: 0 auto;

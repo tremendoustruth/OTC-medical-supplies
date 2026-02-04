@@ -24,10 +24,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
   padding: 0;
-  border: none;
   background: transparent;
+  border: none;
   cursor: pointer;
 }
 
@@ -143,9 +142,13 @@
 }
 
 /* Hover */
-.navBtn:hover,
+.navBtn:hover {
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.75);
+}
+
 .logoButton:hover {
-  opacity: 0.92;
+  border-color: rgba(0, 0, 0, 0.75);
 }
 
 /* CART DRAWER */

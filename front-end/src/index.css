@@ -41,25 +41,27 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+
+/* button {
   border-radius: 8px;
-  border: 1px solid transparent;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(134, 129, 129);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
+  border-width: 0px;
+  /* transition: border-color 0.25s; */
+/* }
 
 button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+} */
+/* */
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

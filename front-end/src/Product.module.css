@@ -46,9 +46,11 @@
 
 .addToCartBtn {
     background-color: rgb(134, 129, 129);
+    border: none;
     border-radius: 8px;
     color: white;
     padding: 0.6em 1.2em;
+    font-weight: 600;
 }
 
 .addToCartBtn:hover {

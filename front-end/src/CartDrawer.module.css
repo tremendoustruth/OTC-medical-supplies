@@ -39,6 +39,10 @@
     line-height: 1;
 }
 
+.cart-drawer__close:hover {
+    transform: scale(1.4);
+}
+
 .cart-drawer__checkout {
     padding: 0.8rem 1rem;
     border-radius: 8px;
@@ -172,6 +176,11 @@
     cursor: not-allowed;
 }
 
+.qtyBtn:hover {
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+}
+
 .qtyValue {
     width: 34px;
     height: 34px;
@@ -199,5 +208,5 @@
 }
 
 .cart-item__remove:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
