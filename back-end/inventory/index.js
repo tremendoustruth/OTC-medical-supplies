@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./docs/swagger.json')
+
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const inventoryRoutes = require("./inventoryRoutes");
 

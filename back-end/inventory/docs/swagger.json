@@ -1,0 +1,225 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "MediSupply Inventory API",
+        "description": "API for managing inventory products",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:9876",
+            "description": "Local dev server"
+        }
+    ],
+    "paths": {
+        "/inventory": {
+            "get": {
+                "summary": "Get all products",
+                "responses": {
+                    "200": {
+                        "description": "List of inventory products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/{productId}": {
+            "get": {
+                "summary": "Get product by ID",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Product identifier",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update product fields",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductUpdate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Product updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a product",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "deleted": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "type": "object",
+                "description": "Inventory product",
+                "additionalProperties": true,
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "example": "6978ea3b936fb09bb523c3d2"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Acetaminophen 600mg Tablets"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Pain relief medication"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 12.99
+                    }
+                }
+            },
+            "ProductCreate": {
+                "type": "object",
+                "description": "Product creation",
+                "additionalProperties": true,
+                "required": [
+                    "title",
+                    "price",
+                    "description"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            },
+            "ProductUpdate": {
+                "type": "object",
+                "description": "Fields that can be updated",
+                "additionalProperties": true,
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float"
+                    }
+                }
+            }
+        }
+    }
+}
